@@ -1,4 +1,4 @@
-## AUtomatic instrumentation can be enabled by adding the operator to your cluster and than adding the instrumentation annotation to the Deployment, Statefulset, Namespace or other resources.
+## Automatic instrumentation can be enabled by adding the operator to your cluster and than adding the instrumentation annotation to the Deployment, Statefulset, Namespace or other resources.
 
 1. Log on to your Kubernetes cluster.
 
@@ -17,7 +17,7 @@
 
 5. create the auto instrumentation on the namespace where you want to deploy your application.
    
-   `kubectl apply -f `instrumentation.yaml`
+   `kubectl apply -f instrumentation.yaml`
 
 6. Create sample app.
     
