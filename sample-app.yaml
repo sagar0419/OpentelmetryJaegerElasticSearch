@@ -1,0 +1,43 @@
+---
+#service for the spring boot application
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: heapdump
+  name: dump
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: heapdump
+  type: ClusterIP
+
+---
+#chnage the image on the deployment this is just a demo application if you want to acccess the same application (if you are able to pull the image) do the portforwad to the service on port 8080 and access the application on url "/actuator/prometheus" "/actuator/metrics"
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: your-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: heapdump
+  template:
+    metadata:
+      labels:
+        app: heapdump
+      annotations:
+        sidecar.opentelemetry.io/inject: "true"
+        instrumentation.opentelemetry.io/inject-java: "true"
+    spec:
+      containers:
+      - name: spring
+        image: sagar27/spring:latest
+        ports:
+        - containerPort: 8080
