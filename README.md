@@ -21,7 +21,7 @@
      kind: Jaeger
      metadata:
        name: simplest
-    EOF```
+    EOF
 
 4. Create opentelemetry operrator on Kubernetes. You can follow the official github repo of opentelemetery (https://github.com/open-telemetry/opentelemetry-operator).
    `kubectl apply -f opentelemetry-operator.yaml`
