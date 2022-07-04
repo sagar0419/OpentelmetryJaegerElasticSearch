@@ -7,10 +7,20 @@
    `kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.8.2/cert-manager.yaml`
 
 3. Install Jaeger Operator. 'https://www.jaegertracing.io/docs/1.35/operator/'
+
+   (Jaegr with helm = https://github.com/jaegertracing/jaeger-operator)
  
    'kubectl create namespace observability'
  
    'kubectl create -f https://github.com/jaegertracing/jaeger-operator/releases/download/v1.35.0/jaeger-operator.yaml -n observability'
+   
+   Creare Jaeger instance.
+   ``kubectl apply -n observability -f - <<EOF
+     apiVersion: jaegertracing.io/v1
+     kind: Jaeger
+     metadata:
+       name: simplest
+     EOF``
 
 4. Create opentelemetry operrator on Kubernetes. You can follow the official github repo of opentelemetery (https://github.com/open-telemetry/opentelemetry-operator).
    `kubectl apply -f opentelemetry-operator.yaml`
