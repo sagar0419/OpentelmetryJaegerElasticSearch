@@ -15,12 +15,13 @@
    'kubectl create -f https://github.com/jaegertracing/jaeger-operator/releases/download/v1.35.0/jaeger-operator.yaml -n observability'
    
    Creare Jaeger instance.
-   ``kubectl apply -n observability -f - <<EOF
+   ```yaml
+   kubectl apply -n observability -f - <<EOF
      apiVersion: jaegertracing.io/v1
      kind: Jaeger
      metadata:
        name: simplest
-     EOF``
+    EOF```
 
 4. Create opentelemetry operrator on Kubernetes. You can follow the official github repo of opentelemetery (https://github.com/open-telemetry/opentelemetry-operator).
    `kubectl apply -f opentelemetry-operator.yaml`
